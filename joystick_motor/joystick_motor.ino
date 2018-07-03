@@ -1,4 +1,3 @@
-
 #define step_pin 2  // Pin 3 connected to Steps pin on EasyDriver
 #define dir_pin 3   // Pin 2 connected to Direction pin
 #define MS1 4       // Pin 4 connected to MS1 pin
@@ -13,7 +12,6 @@ int i;
 void setup() {
    pinMode(MS1, OUTPUT);
    pinMode(MS2, OUTPUT);
-   pinMode(MS3, OUTPUT);
    pinMode(dir_pin, OUTPUT);
    pinMode(step_pin, OUTPUT);
    pinMode(ENABLE, OUTPUT);
@@ -29,30 +27,29 @@ void setup() {
    digitalWrite(step_pin, LOW);
    digitalWrite(MS1, HIGH);      // Configures to Full Steps
    digitalWrite(MS2, HIGH);      // Configures to Full Steps    
-   digitalWrite(MS3, HIGH);      // Configures to Full Steps
    Serial.begin(9600);
    
 }
 void loop() {
   Serial.println(analogRead(X_pin));
   if (analogRead(X_pin) >= 0 && analogRead(X_pin) <= 100) 
-  { digitalWrite(dir_pin, LOW);
-//    for(i=0 ; i <= 3 ; ++i)
-    digitalWrite(step_pin, HIGH);
-    delay(90);          
-    digitalWrite(step_pin, LOW); 
-    delay(90);
-    // LOOK, I changed nothing but hopefully git won't notice
-  }  
- 
-//    if (analogRead(X_pin) >= 800 && analogRead(X_pin) <= 1025) 
-//    {digitalWrite(dir_pin,HIGH);
-////    for (i=0 ; i <= 3 ; ++i)
-//    digitalWrite(step_pin, HIGH);
-//    delay(90);       
-//    digitalWrite(step_pin, LOW); 
-//    delay(90);
-//  }  
+  { 
+    digitalWrite(dir_pin, LOW);
+    for(i=0 ; i <= 3 ; ++i){
+      digitalWrite(step_pin, HIGH);
+      delay(1);          
+      digitalWrite(step_pin, LOW); 
+      delay(1);
+    }
+  } else if (analogRead(X_pin) >= 800 && analogRead(X_pin) <= 1025){
+      digitalWrite(dir_pin,HIGH);
+      for (i=0 ; i <= 3 ; ++i){
+        digitalWrite(step_pin, HIGH);
+        delay(90);       
+        digitalWrite(step_pin, LOW); 
+        delay(90);
+      }
+     }  
   }
         
   
