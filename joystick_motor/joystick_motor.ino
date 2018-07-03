@@ -42,6 +42,7 @@ void loop() {
     delay(90);          
     digitalWrite(step_pin, LOW); 
     delay(90);
+    // LOOK, I changed nothing but hopefully git won't notice
   }  
  
 //    if (analogRead(X_pin) >= 800 && analogRead(X_pin) <= 1025) 
