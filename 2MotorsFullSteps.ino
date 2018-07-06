@@ -45,17 +45,17 @@ void setup() {
 // HIGH HIGH HIGH= An eighth of Step //
 */
    digitalWrite(MS1, HIGH);      // Configures to Full Steps
-   digitalWrite(MS2, LOW);    // Configures to Full Steps
-   digitalWrite(MS3, LOW);
-   digitalWrite(M1, LOW);      // 
-   digitalWrite(M2, LOW);    // 
-   digitalWrite(M3, LOW);   //
+   digitalWrite(MS2, HIGH);    // Configures to Full Steps
+   digitalWrite(MS3, HIGH);
+   digitalWrite(M1, HIGH);      // 
+   digitalWrite(M2, HIGH);    // 
+   digitalWrite(M3, HIGH);   //
 //   
 }
 
 void loop() {  
     digitalWrite(EN, LOW);
- if (analogRead(X_pin) >= 0 && analogRead(X_pin) < 100) 
+ if (analogRead(X_pin) >= 0 && analogRead(X_pin) < 100) // && analogRead(Y_pin) == 0??
  {
   Clockwise(); 
  }
@@ -78,31 +78,31 @@ void resetBEDPins()
 {
   digitalWrite(stp, LOW);
   digitalWrite(dir, LOW);
-  digitalWrite(MS1, LOW);
-  digitalWrite(MS2, LOW);
-  digitalWrite(MS3, LOW);
+  digitalWrite(MS1, HIGH);
+  digitalWrite(MS2, HIGH);
+  digitalWrite(MS3, HIGH);
   digitalWrite(EN, HIGH);
   digitalWrite(stp_pin, LOW);
   digitalWrite(dir_pin, LOW);
-  digitalWrite(M1, LOW);
-  digitalWrite(M2, LOW);
-  digitalWrite(M3, LOW);
+  digitalWrite(M1, HIGH);
+  digitalWrite(M2, HIGH);
+  digitalWrite(M3, HIGH);
   digitalWrite(ENABLE, HIGH);
   
 }
 
  void Clockwise()
   {  digitalWrite(dir, LOW);
-  for (i = 0; i< 40 ; i++){
+  for (i = 1; i< 10 ; i++){
      digitalWrite(stp, HIGH);
      delay(1);
      digitalWrite(stp, LOW);
      delay(1);
-   }   
+   }  
   }
  void AntiClockwise()
  {   digitalWrite(dir, HIGH);
-   for (i = 0; i< 40 ; i++){
+   for (i = 1; i< 10 ; i++){
      digitalWrite(stp, HIGH);
      delay(1);
      digitalWrite(stp, LOW);
@@ -114,7 +114,7 @@ void resetBEDPins()
 // 
  void MotorCW()
   {  digitalWrite(dir_pin, LOW);
-  for (i = 0; i< 40 ; i++){
+  for (i = 1; i< 10 ; i++){
      digitalWrite(stp_pin, HIGH);
      delay(1);
      digitalWrite(stp_pin, LOW);
@@ -123,7 +123,7 @@ void resetBEDPins()
   }
  void MotorACW()
  {   digitalWrite(dir_pin, HIGH);
-   for (i = 0; i< 40 ; i++){
+   for (i = 1; i< 10 ; i++){
      digitalWrite(stp_pin, HIGH);
      delay(1);
      digitalWrite(stp_pin, LOW);
